@@ -12,7 +12,7 @@ function verifyToken(req, res, next) {
 		return
 	}
 
-	const data = jwt.verifyToken(token);
+	const data = jwt.verify(token, process.env.JWT_KEY);
 	
 	if (!data) {
 		return res.status(401).json({
